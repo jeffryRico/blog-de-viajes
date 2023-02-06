@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Blog Viajes</title>
+        <link rel="stylesheet" href="/Stylessheets/estilos.css">
+        <link rel="stylesheet" href="/Stylessheets/bootstrap.min.css">
+        
+    </head>
+
+    <body>
+        <%- include ('./partials/encabezado') %>
+
+        <div class="container">
+          <img src="images/natura.jpeg" height="300px" width="100%">
+            <h1>Inicio</h1>
+            <p>Aquí nuestras últimas publicaciones:</p>
+        
+            <div class="row">
+        
+              <% publicaciones.forEach(publicacion => { %>
+              <div class="col-sm-12">
+                <div class="card fluid ">
+                  <h3 class="section"><a href="/publicacion/<%=publicacion.id%>">
+                      <%=publicacion.titulo%></a> <mark class="border bg-info d-inline-flex border-primary">
+                      <%=publicacion.votos%></mark></h3>
+                  <h5 class="section dark">
+                    <% if (publicacion.avatar && publicacion.avatar != "") { %>
+                      <img class="avatar" src="/avatars/<%=publicacion.avatar%>" />
+                      <% } else {
+                        %>
+                        <i class="bi bi-person-circle"></i>
+                    <% } %>
+                    <%=publicacion.pseudonimo%> - 
+                    <i class="bi bi-calendar-fill"></i>
+                    <%= publicacion.fecha_hora.getFullYear() %>/
+                    <%= publicacion.fecha_hora.getMonth()+1 %>/
+                    <%= publicacion.fecha_hora.getDate() %>
+                  </h5>
+                  <p>
+                    <%= publicacion.resumen %>
+                  </p>
+                </div>
+              </div>
+              <% }) %>
+        
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <p class="centrado">
+                  <a href="/?pagina=<%=pagina-1%>"><< Anterior</a>
+                  |
+                  <a href="/?pagina=<%=pagina+1%>">Siguiente >></a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <%- include ('./partials/footer') %>  
+        <script src="javascripts/script.js"></script>
+    </body>
+</html>

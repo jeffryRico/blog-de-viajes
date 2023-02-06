@@ -1,0 +1,11 @@
+html {
+    font-size: 14px;
+}
+
+.centrado{
+    text-align: center;
+}
+
+img.avatar{
+    max-height: 15px;
+}

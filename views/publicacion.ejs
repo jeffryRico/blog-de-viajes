@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Blog Viajes</title>
+        <link rel="stylesheet" href="/Stylessheets/estilos.css">
+        <link rel="stylesheet" href="/Stylessheets/bootstrap.min.css">
+    </head>
+
+    <body>
+        <%- include ('./partials/encabezado') %>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        <%=publicacion.titulo%>
+                        <mark class="border bg-info d-inline-flex border-primary">
+                            <%=publicacion.votos%>
+                        </mark>
+                    </h1>
+                    <div>
+                        <%- publicacion.contenido%>
+                    </div>
+                    <a class="btn btn-primary" href="/publicacion/<%=publicacion.id%>/votar">Vota</a>
+                </div>
+            </div>
+        </div>
+
+          <%- include ('./partials/footer') %>  
+        <script src="javascripts/script.js"></script>
+    </body>
+</html>
